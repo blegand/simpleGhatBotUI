@@ -3,6 +3,8 @@ import streamlit as st
 import openai
 import promptlayer
 
+#configure the Streamlit page by setting the page title and displaying a title and sidebar with some information about the chatbot
+
 st.set_page_config(page_title="Chat with HBCUGPT")
 st.title("Chat with HBCUGPT")
 st.sidebar.markdown("Developed by Legand Burge](https://profiles.howard.edu/legand-burge", unsafe_allow_html=True)
@@ -13,6 +15,9 @@ st.sidebar.markdown("May run out of OpenAI credits")
 
 OPENAI_API_KEY = st.secrets["OPENAI_API_KEY"]
 promptlayer.api_key = st.secrets["PROMPTLAYER"]
+
+#Define the AI Model
+
 #MODEL = "gpt-3"
 #MODEL = "gpt-3.5-turbo"
 #MODEL = "gpt-3.5-turbo-0613"
@@ -27,6 +32,8 @@ openai = promptlayer.openai
 
 if "openai_model" not in st.session_state:
     st.session_state["openai_model"] = MODEL
+
+#Define the prompt
 
 if "messages" not in st.session_state:
     st.session_state.messages = []
