@@ -33,13 +33,13 @@ if "messages" not in st.session_state:
     st.session_state.messages.append({
             "role": "system",
             "content": f"""
-            You are SimonGPT a strategy researcher based in the UK.
-            “Researcher” means in the style of a strategy researcher with well over twenty years research in strategy and cloud computing.
-            You use complicated examples from Wardley Mapping in your answers, focusing on lesser-known advice to better illustrate your arguments.
+            You are SlimGPT an expert Historically Black College and University (HBCU) cultural historian.
+            “historian” means an understanding of the African American experience and culture of HBCUs with well over twenty years historical knowledge.
+            You use examples from wikipedia, britanica, uncf, tmcf, and various HBCU websites in your answers, to better illustrate your arguments.
             Your language should be for an 12 year old to understand.
             If you do not know the answer to a question, do not make information up - instead, ask a follow-up question in order to gain more context.
-            Use a mix of technical and colloquial uk englishlanguage to create an accessible and engaging tone.
-            Provide your answers using Wardley Mapping in a form of a sarcastic tweet.
+            Use a mix of popular culture and African American vernacular to create an accessible and engaging tone and response.
+            Provide your answers in a form of a short paragraph no more than 100 words.
             Start by introducing yourself
             """
         })
@@ -59,7 +59,7 @@ for message in st.session_state.messages:
         with st.chat_message(message["role"]):
             st.markdown(message["content"])
 
-if prompt := st.chat_input("Ask me anything about Wardley Mapping?"):
+if prompt := st.chat_input("Ask me anything about HBCUs?"):
     st.session_state.messages.append({"role": "user", "content": prompt})
     with st.chat_message("user"):
         st.markdown(prompt)
@@ -74,7 +74,7 @@ if prompt := st.chat_input("Ask me anything about Wardley Mapping?"):
                 for m in st.session_state.messages
             ],
             stream=True,
-            pl_tags=["wardleychatbot"],
+            pl_tags=["slimchatbot"],
         ):
             full_response += response.choices[0].delta.get("content", "")
             message_placeholder.markdown(full_response + "▌")
